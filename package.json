@@ -4,7 +4,8 @@
   "description": "Web3data abi module upload helper for use with web3data-js",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "xo && ava",
+    "postinstall": "scripts/postinstall.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,31 @@
   "bugs": {
     "url": "https://github.com/web3data/web3data-deploy/issues"
   },
-  "homepage": "https://github.com/web3data/web3data-deploy#readme"
+  "homepage": "https://github.com/web3data/web3data-deploy#readme",
+  "dependencies": {
+    "ava": "^0.25.0",
+    "got": "^9.2.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "i": "^0.3.6",
+    "mock-fs": "^4.7.0",
+    "xo": "^0.23.0"
+  },
+  "ava": {
+    "files": [
+      "tests/**.test.js"
+    ],
+    "require": [
+      "@babel/register"
+    ]
+  },
+  "xo": {
+    "semicolon": false,
+    "space": true,
+    "prettier": true
+  }
 }
