@@ -25,24 +25,24 @@ test('migrations dir exists (mock-fs is working)', t => {
   t.truthy(fs.existsSync('migrations'))
 })
 
-test.only('migrations dir contains mock deploy scripts (mock-fs is working)', t => {
-  let files = []
-  fs.readdirSync('migrations').forEach(file => {
-    files.push(file)
-  })
-  t.deepEqual(files, ['0_deploy_script.js', '1_deploy_script.js', '2_deploy_script.js']);
-})
-
-test('build/contract dir exists (mock-fs is working)', t => {
-  t.truthy(fs.existsSync('build/contract'))
-})
-
 test('migrations dir contains mock deploy scripts (mock-fs is working)', t => {
   let files = []
   fs.readdirSync('migrations').forEach(file => {
     files.push(file)
   })
-  t.deepEqual(files, ['0_deploy_script.js', '1_deploy_script.js', '2_deploy_script.js']);
+  t.deepEqual(files, ['1_deploy_script.js', '2_deploy_script.js', '3_deploy_script.js']);
+})
+
+test('build/contract dir exists (mock-fs is working)', t => {
+  t.truthy(fs.existsSync('build/contracts'))
+})
+
+test.skip('build/contract dir contains mock contract abi (mock-fs is working)', t => {
+  let files = []
+  fs.readdirSync('build/contracts').forEach(file => {
+    files.push(file)
+  })
+  t.deepEqual(files, ['contractA.json','contractA.json']);
 })
 
 test('postinstall script throws error if no migrations folder exists', t => {
