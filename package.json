@@ -1,0 +1,26 @@
+{
+  "name": "web3data-deploy",
+  "version": "0.0.1",
+  "description": "Web3data abi module upload helper for use with web3data-js",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/web3data/web3data-deploy.git"
+  },
+  "keywords": [
+    "web3data",
+    "web3",
+    "upload",
+    "blockchain",
+    "smart-contract"
+  ],
+  "author": "Taylor Dawson",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/web3data/web3data-deploy/issues"
+  },
+  "homepage": "https://github.com/web3data/web3data-deploy#readme"
+}
