@@ -68,7 +68,6 @@ const uploadFile = (file, payload) => {
 
 module.exports = function(network, account) {
   fs.readdirSync(DEFAULT_BUILD_DIR).forEach(file => {
-    console.log(`${__dirname}/${DEFAULT_BUILD_DIR}${file}`)
     let filePath = `${__dirname}/${DEFAULT_BUILD_DIR}${file}`
     let payload = getMeta(filePath, network, account)
     uploadFile(filePath, payload)
