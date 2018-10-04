@@ -1,6 +1,7 @@
-import fs from 'fs'
-const MIGRATIONS_DIR = `${__dirname}/../migrations`
-export function addUploadFile() {
+const fs = require('fs')
+const path = require('path')
+let MIGRATIONS_DIR = path.join(__dirname, '/../', 'migrations')
+let addUploadFile = function() {
 
   if (!fs.existsSync(MIGRATIONS_DIR)) {
     throw new Error('Unable to locate migrations folder\ncheck that your \'migrations\' folder is in your project root directory')
