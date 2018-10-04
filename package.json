@@ -1,6 +1,6 @@
 {
   "name": "web3data-deploy",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Web3data abi module upload helper for use with web3data-js",
   "main": "index.js",
   "scripts": {
@@ -25,12 +25,11 @@
   },
   "homepage": "https://github.com/web3data/web3data-deploy#readme",
   "dependencies": {
-    "@babel/runtime": "^7.1.2",
-    "ava": "^0.25.0",
-    "form-data": "^2.3.2",
-    "got": "^9.2.2"
+    "form-data": "^2.3.2"
   },
   "devDependencies": {
+    "ava": "^0.25.0",
+    "@babel/runtime": "^7.1.2",
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
     "@babel/plugin-transform-runtime": "^7.1.0",
