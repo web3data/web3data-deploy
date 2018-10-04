@@ -12,9 +12,7 @@ test.beforeEach(t => {
       '3_deploy_script.js': 'yadd, yadd, yadda'
     },
     'build/contracts': {
-      // 'contractA.json': {'contractA': 'abi json stuff'},
-      // 'contractB.json': {},
-      // 'contract_abi': contract_abi.networks
+      'contract_abi': JSON.stringify(contract_abi)
     }
   })
 })
@@ -61,11 +59,11 @@ test('postinstall script throws error if migrations folder is empty', t => {
   t.is(error.message, 'migrations folder is empty');
 })
 
-test.only('migrations folder contains \'X_abi_analytics\' w/ correct number', t => {
+test('migrations folder contains \'X_abi_analytics\' w/ correct number', t => {
   addUploadFile()
   t.truthy(fs.existsSync('migrations/4_abi_analytics'))
 })
 
-test.skip('test upload', async t => {
+test.only('test upload', t => {
   uploadModule()
 })

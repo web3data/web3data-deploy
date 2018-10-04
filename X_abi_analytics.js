@@ -1,2 +1,5 @@
 import uploadModule from 'web3data-deploy'
-uploadModule()
+
+module.exports = function(deployer, network, accounts) {
+  uploadModule(network, accounts).
+}
