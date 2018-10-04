@@ -21,11 +21,11 @@ module.exports = {
       network_id: '*' // Match any network id
     },
     rinkeby: {
-      // must be a thunk, otherwise truffle commands may hang in CI
+      // Must be a thunk, otherwise truffle commands may hang in CI
       network_id: 4
     },
     ropsten: {
-      // must be a thunk, otherwise truffle commands may hang in CI
+      // Must be a thunk, otherwise truffle commands may hang in CI
       network_id: 3
     }
   }

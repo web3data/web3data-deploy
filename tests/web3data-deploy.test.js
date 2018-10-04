@@ -1,7 +1,6 @@
 import test from 'ava'
 import fs from 'fs'
 import { addUploadFile } from '../scripts/postinstall'
-import { uploadModule } from '../index'
 import mock from 'mock-fs'
 import contract_abi from './abi-test.json'
 
@@ -46,14 +45,14 @@ test('build/contract dir contains mock contract abi (mock-fs is working)', t => 
   t.deepEqual(files, ['contract_abi']);
 })
 
-test.only('postinstall script throws error if no migrations folder exists', t => {
+test('postinstall script throws error if no migrations folder exists', t => {
   mock.restore()
   mock({'':{}})
   const error = t.throws(() => { addUploadFile() }, Error);
   t.is(error.message, 'Unable to locate migrations folder\ncheck that your \'migrations\' folder is in your project root directory');
 })
 
-test('postinstall script throws error if migrations folder is empty', t => {
+test.skip('postinstall script throws error if migrations folder is empty', t => {
   mock.restore()
   mock({'migrations':{}})
   const error = t.throws(() => { addUploadFile() }, Error);

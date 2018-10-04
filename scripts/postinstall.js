@@ -9,6 +9,6 @@ export function addUploadFile() {
   fs.readdir(MIGRATIONS_DIR, (err, files) => {
     if (err) throw err
     if (!files.length > 0) throw new Error('migrations folder is empty')
-    fs.writeFileSync(`migrations/${files.length + 2}_abi_analytics`, 'import uploadModule from \'web3data-deploy\'\nmodule.exports = function(network, accounts) {\n\tuploadModule(network, accounts).\n}', 'utf-8')
+    fs.writeFileSync(`migrations/${files.length + 2}_abi_analytics`, 'import uploadModule from \'web3data-deploy\'\nmodule.exports = function(network, accounts) {\n\tuploadModule(network, accounts)\n}', 'utf-8')
   })
 }

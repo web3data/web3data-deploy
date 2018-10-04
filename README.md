@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/web3data/web3data-deploy.svg?branch=master)](https://travis-ci.com/web3data/web3data-deploy)
+
 # web3data-deploy
 
 Deploy contract ABI to web3data, allowing easy security audit and analytics
