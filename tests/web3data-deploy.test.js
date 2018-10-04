@@ -1,6 +1,7 @@
 import test from 'ava'
 import fs from 'fs'
 import { addUploadFile } from '../scripts/postinstall'
+import { uploadModule } from '../index'
 import mock from 'mock-fs'
 
 test.beforeEach(t => {
@@ -11,7 +12,7 @@ test.beforeEach(t => {
       '3_deploy_script.js': 'yadd, yadd, yadda'
     },
     'build/contracts': {
-      'contractA.json': {},
+      'contractA.json': {'contractA': 'abi json stuff'},
       'contractB.json': {}
     }
   })
@@ -37,9 +38,9 @@ test('build/contract dir exists (mock-fs is working)', t => {
   t.truthy(fs.existsSync('build/contracts'))
 })
 
-test.skip('build/contract dir contains mock contract abi (mock-fs is working)', t => {
+test('build/contract dir contains mock contract abi (mock-fs is working)', t => {
   let files = []
-  fs.readdirSync('build/contracts').forEach(file => {
+  fs.readdirSync('/build/contracts').forEach(file => {
     files.push(file)
   })
   t.deepEqual(files, ['contractA.json','contractA.json']);
@@ -62,4 +63,8 @@ test('postinstall script throws error if no migrations folder exists', t => {
 test('migrations folder contains \'X_abi_analytics\' w/ correct number', t => {
   addUploadFile()
   t.truthy(fs.existsSync('migrations/4_abi_analytics'))
+})
+
+test.only('test upload', async t => {
+  uploadModule()
 })
