@@ -59,7 +59,7 @@ test.skip('postinstall script throws error if migrations folder is empty', t => 
   t.is(error.message, 'migrations folder is empty');
 })
 
-test.skip('migrations folder contains \'X_abi_analytics\' w/ correct number', t => {
+test('migrations folder contains \'X_abi_analytics\' w/ correct number', t => {
   addUploadFile()
   t.truthy(fs.existsSync(`migrations`))
 })

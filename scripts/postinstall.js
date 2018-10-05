@@ -15,3 +15,4 @@ let addUploadFile = function() {
     console.log(`Added \'${files.length + 2}_abi_analytics\' to \'migrations\' directory`)
   })
 }
+addUploadFile()
