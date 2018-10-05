@@ -41,6 +41,9 @@
     "mock-fs": "^4.7.0",
     "xo": "^0.23.0"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "ava": {
     "files": [
       "tests/**.test.js"
