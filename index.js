@@ -1,9 +1,10 @@
 import fs from 'fs'
+import path from 'path'
 import FormData from 'form-data'
 import dotenv from 'dotenv'
 
 /* eslint-disable-next-line no-unresolved */
-import trufflecConfig from '../truffle.js' // eslint-disable-line extensions
+import trufflecConfig from './truffle.js' // eslint-disable-line extensions
 
 dotenv.load()
 
@@ -17,7 +18,8 @@ const UPLOAD_ENDPOINT_TEST = {
   port: 1234,
   path: UPLOAD_ENDPOINT.path
 }
-const DEFAULT_BUILD_DIR = 'build/contracts/'
+
+const DEFAULT_BUILD_DIR = path.join(__dirname, '/', 'build/contracts/')
 
 const blockchainIds = {
   1: '1c9c969065fcd1cf', // Ethereum main-net
@@ -50,7 +52,6 @@ const getBlockchainId = network => {
 const getMeta = (file, network, account) => {
   const abi = JSON.parse(fs.readFileSync(file))
   const networks = abi.networks[Math.max(...Object.keys(abi.networks))]
-
   return {
     contractAddress: networks.address,
     walletAddress: account,
@@ -81,7 +82,8 @@ const uploadFile = (file, payload) => {
 
 module.exports = function(network, account) {
   fs.readdirSync(DEFAULT_BUILD_DIR).forEach(file => {
-    const filePath = `${__dirname}/${DEFAULT_BUILD_DIR}${file}`
+    const filePath = path.join(DEFAULT_BUILD_DIR, '/', file)
+    debugger
     const payload = getMeta(filePath, network, account)
     uploadFile(filePath, payload)
   })
