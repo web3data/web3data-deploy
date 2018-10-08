@@ -1,10 +1,10 @@
-import fs from 'fs'
-import path from 'path'
-import FormData from 'form-data'
-import dotenv from 'dotenv'
+let fs = require('fs')
+let path = require('path')
+let FormData = require('form-data')
+let dotenv = require('dotenv')
 
 /* eslint-disable-next-line no-unresolved */
-import trufflecConfig from './truffle.js' // eslint-disable-line extensions
+let trufflecConfig = require('./truffle.js') // eslint-disable-line extensions
 
 dotenv.load()
 
