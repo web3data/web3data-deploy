@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-let MIGRATIONS_DIR = path.join(__dirname, '/../', 'migrations')
+let MIGRATIONS_DIR = path.join(__dirname, '/../../../', 'migrations')
 let addUploadFile = function() {
 
   if (!fs.existsSync(MIGRATIONS_DIR)) {
