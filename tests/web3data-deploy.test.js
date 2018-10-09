@@ -65,6 +65,6 @@ test.skip('migrations folder contains \'X_abi_analytics\' w/ correct number', t 
   t.truthy(fs.existsSync(`../migrations`))
 })
 
-test.only('test upload', t => {
+test.skip('test upload', t => {
   uploadModule('rinkeby', '0x0000000000000000000000000000000000000000')
 })

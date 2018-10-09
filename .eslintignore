@@ -4,5 +4,4 @@
 .git
 /tests
 truffle.js
-X_abi_analytics.js
-index.js
+x-abi-analytics.js
