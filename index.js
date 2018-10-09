@@ -1,24 +1,28 @@
 let fs = require('fs')
+let url = require('url')
 let path = require('path')
 let FormData = require('form-data')
 let dotenv = require('dotenv')
 dotenv.load()
 
-const UPLOAD_ENDPOINT = {
-  host: 'contract-service.amberdata.io',
-  port: 443,
-  path: '/api/v1/upload'
-}
-const UPLOAD_ENDPOINT_TEST = {
-  host: 'localhost',
-  port: 1234,
-  path: UPLOAD_ENDPOINT.path
-}
+// const prodUrl = url.parse('https://contract-service.amberdata.io/api/v1/upload')
+// const devUrl = url.parse('http://localhost:1234/api/v1/upload')
+const prodTestUrl = 'https://contract-service.amberdata.io/api/v1/upload'
+const mainUrl = url.parse(process.env.UPLOADENDPOINT || prodTestUrl)
+const mainPath = process.env.NODE_ENV === 'development' ? devUrl : prodUrl
+const headers = {'x-amberdata-api-key': process.env.AMBERDATA_API_KEY || ''}
 
 const DEFAULT_BUILD_DIR = path.join(__dirname, '/../../', 'build/contracts/')
 
 const blockchainIds = {
   1: '1c9c969065fcd1cf', // Ethereum main-net
+  4: '1b3f7a72b3e99c13' // Rinkeby Testnet
+}
+const blockchainIds = {
+  1: {
+    blockchainId: '1c9c969065fcd1cf',
+    slug: 'ethereum-mainnet'
+  }, // Ethereum main-net
   4: '1b3f7a72b3e99c13' // Rinkeby Testnet
 }
 
@@ -38,15 +42,14 @@ const uploadFile = function(file, payload) {
   form.append('transactionHash', payload.transactionHash)
   form.append('walletAddress', payload.walletAddress)
   form.append('blockchainId', payload.blockchainId)
+  const options = Object.assign({}, mainPath, { headers })
   form.submit(
-    {
-      host: UPLOAD_ENDPOINT_TEST.host,
-      port: UPLOAD_ENDPOINT_TEST.port,
-      path: UPLOAD_ENDPOINT_TEST.path,
-      headers: {'x-amberdata-api-key': process.env.API_KEY || ''}
-    },
+    options,
     (err, res) => {
       console.log(err, res.statusCode)
+
+      console.log('LINK TO THE CONTRACT IN AMBERDATA')
+      console.log('https://ethereum-rinkeby.amberdata.io/addresses/HASHHERE/management')
     }
   )
 }

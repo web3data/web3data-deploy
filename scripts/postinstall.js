@@ -12,8 +12,13 @@ let addUploadFile = function() {
     if (err) throw err
     if (!files.length > 0) throw new Error('migrations folder is empty')
     const ABI_ANALYTICS_PATH = path.join(MIGRATIONS_DIR, `${files.length + 2}_abi_analytics.js`)
-    fs.writeFileSync(ABI_ANALYTICS_PATH, 'module.exports = require(\'web3data-deploy\')\n', 'utf-8')
+    const abiSource = fs.readFileSync(ABI_ANALYTICS_PATH)
+    fs.writeFileSync(ABI_ANALYTICS_PATH, abiSource, 'utf-8')
     console.log(`Added \'${files.length + 2}_abi_analytics\' to \'migrations\' directory`)
+
+
+    console.log("add notice of API Key setup if no found")
+    console.log("link to get amberdata key")
   })
 }
 addUploadFile()
