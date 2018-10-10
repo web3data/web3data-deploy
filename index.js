@@ -110,7 +110,6 @@ module.exports = function(deployer, network, accounts) {
 
   fs.readdir(DEFAULT_BUILD_DIR, (err, files) => {
     for (let i = 1; i < files.length; i++) {
-
       // Get absolute file path of conract abi and load the api
       const filePath = path.join(DEFAULT_BUILD_DIR, '/', files[i])
       const abi = JSON.parse(fs.readFileSync(filePath))
@@ -125,7 +124,6 @@ module.exports = function(deployer, network, accounts) {
           }' might not have been deployed therefore it was skipped by the Uploader`
         )
       } else {
-
         // Get the 'networks' object from the abi, parse data and contruct the payload then upload the file
         const networks = abi.networks[networkId]
         const payload = getMeta(networks, networkId, accounts[0])
