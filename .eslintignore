@@ -5,3 +5,4 @@
 /tests
 truffle.js
 x-abi-analytics.js
+migrations/
