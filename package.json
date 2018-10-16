@@ -39,6 +39,7 @@
     "ava": "^0.25.0",
     "dotenv": "^6.0.0",
     "mock-fs": "^4.7.0",
+    "shelljs": "^0.8.2",
     "xo": "^0.23.0"
   },
   "publishConfig": {

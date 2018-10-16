@@ -63,4 +63,4 @@ typings/
 # Testing/Dev files
 truffle
 build/
-tests/
+tests/web3data-deploy.test.js
