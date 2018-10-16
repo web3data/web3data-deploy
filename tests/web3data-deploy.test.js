@@ -1,6 +1,6 @@
 import test from 'ava'
 import fs from 'fs'
-// import { addUploadFile } from '../scripts/postinstall'
+import addUploadFile from '../scripts/postinstall'
 import mock from 'mock-fs'
 import uploadModule from '../index.js'
 // import contract_abi from './abi-test.json'
@@ -53,11 +53,11 @@ import uploadModule from '../index.js'
 //   mock.restore()
 // })
 
-test.skip('postinstall script throws error if migrations folder is empty', t => {
-  mock.restore()
+test('postinstall script throws error if migrations folder is empty', t => {
   mock({'migrations':{}})
-  const error = t.throws(() => { addUploadFile() }, Error);
-  t.is(error.message, 'migrations folder is empty');
+  const error = t.throws(() => { addUploadFile() }, Error)
+  t.is(error.message, 'migrations folder is empty')
+  mock.restore()
 })
 
 test.skip('migrations folder contains \'X_abi_analytics\' w/ correct number', t => {

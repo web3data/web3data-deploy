@@ -63,3 +63,4 @@ typings/
 # Testing/Dev files
 truffle
 build/
+tests/

@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-let MIGRATIONS_DIR = './migrations'//path.join(__dirname, '/../../../', 'migrations')
+let MIGRATIONS_DIR = path.join(__dirname, '/../../../', 'migrations')
 const RERUN_MSG = 'To rerun the postinstall script:\n\tnpm explore web3data-deploy -- npm run postinstall'
 let addUploadFile = function() {
 
