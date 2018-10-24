@@ -71,9 +71,11 @@ const uploadAbi = function(file, payload) {
       console.log(err, res.statusCode)
     } else {
       console.log(
-        `[ Uploader ] \u001B[32mINFO:\u001B[0m View your contract at: \u001B[36mhttps://${
-          payload.slug
-        }.amberdata.io/addresses/${payload.contractAddress}/management\u001B[0m`
+        `[ Uploader ] \u001B[32mINFO:\u001B[0m View your contract, ${
+          payload.contractName
+        } at: \u001B[36mhttps://${payload.slug}.amberdata.io/addresses/${
+          payload.contractAddress
+        }/management\u001B[0m`
       )
     }
   })
@@ -117,9 +119,9 @@ module.exports = function(deployer, network, accounts) {
         const filePath = path.join(DEFAULT_BUILD_DIR, '/', files[i])
         const abi = JSON.parse(fs.readFileSync(filePath))
 
-        /* Check if the networks field is empty. If it is, then contract
-       * was not deployed to a network
-       */
+        /* Check if the networks field is empty. If it is, then the contract
+         * was not deployed to a network
+         */
         if (isEmpty(abi.networks)) {
           console.log(
             `\n[ Uploader ] \u001B[32mINFO:\u001B[0m '${
@@ -130,6 +132,7 @@ module.exports = function(deployer, network, accounts) {
           // Get the 'networks' object from the abi, parse data and contruct the payload then upload the file
           const networks = abi.networks[networkId]
           const payload = getMeta(networks, networkId, accounts[0])
+          payload.contractName = abi.contractName
           uploadAbi(filePath, payload)
         }
       }
