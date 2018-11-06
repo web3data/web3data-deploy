@@ -115,7 +115,7 @@ module.exports = function(deployer, network, accounts) {
       console.log(`\u001B[31m${err}\u001B[0m\n`)
     } else {
       for (let i = 0; i < files.length; i++) {
-        if(files[i] !== 'Migrations.json') {
+        if (files[i] !== 'Migrations.json') {
           // Get absolute file path of conract abi and load the api
           const filePath = path.join(DEFAULT_BUILD_DIR, '/', files[i])
           const abi = JSON.parse(fs.readFileSync(filePath))
