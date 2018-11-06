@@ -1,14 +1,14 @@
 const fs = require('fs')
 const path = require('path')
 let MIGRATIONS_DIR = path.join(__dirname, '/../../../', 'migrations')
-const RERUN_MSG = 'To rerun the postinstall script:\n\tnpm explore web3data-deploy -- npm run postinstall'
+const RERUN_MSG = 'To rerun the postinstall script:\n\tnpm explore web3data-deploy -- npm run postinstall\n'
 let addUploadFile = function() {
 
   // Check that we can find the migrations folder
   if (!fs.existsSync(MIGRATIONS_DIR)) {
-    console.log(`\u001B[31mUnable to locate migrations folder check that your \'migrations\' folder is in your project root directory\u001B[0m\n${RERUN_MSG}`)
+    console.log(`\n[ Uploader ] \u001B[31mERROR: Unable to locate migrations folder check that your \'migrations\' folder is in your project root directory\u001B[0m`)
+    console.log(`\n[ Uploader ] \u001B[32mINFO:\u001B[0m ${RERUN_MSG}`)
   } else {
-
     // Iterate through files in the migrations directory
     fs.readdir(MIGRATIONS_DIR, (err, files) => {
       if (err) {

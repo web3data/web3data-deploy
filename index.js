@@ -114,26 +114,28 @@ module.exports = function(deployer, network, accounts) {
     if (err) {
       console.log(`\u001B[31m${err}\u001B[0m\n`)
     } else {
-      for (let i = 1; i < files.length; i++) {
-        // Get absolute file path of conract abi and load the api
-        const filePath = path.join(DEFAULT_BUILD_DIR, '/', files[i])
-        const abi = JSON.parse(fs.readFileSync(filePath))
+      for (let i = 0; i < files.length; i++) {
+        if(files[i] !== 'Migrations.json') {
+          // Get absolute file path of conract abi and load the api
+          const filePath = path.join(DEFAULT_BUILD_DIR, '/', files[i])
+          const abi = JSON.parse(fs.readFileSync(filePath))
 
-        /* Check if the networks field is empty. If it is, then the contract
-         * was not deployed to a network
-         */
-        if (isEmpty(abi.networks)) {
-          console.log(
-            `\n[ Uploader ] \u001B[32mINFO:\u001B[0m '${
-              files[i]
-            }' might not have been deployed therefore it was skipped by the Uploader`
-          )
-        } else {
-          // Get the 'networks' object from the abi, parse data and contruct the payload then upload the file
-          const networks = abi.networks[networkId]
-          const payload = getMeta(networks, networkId, accounts[0])
-          payload.contractName = abi.contractName
-          uploadAbi(filePath, payload)
+          /* Check if the networks field is empty. If it is, then the contract
+           * was not deployed to a network
+           */
+          if (isEmpty(abi.networks)) {
+            console.log(
+              `\n[ Uploader ] \u001B[32mINFO:\u001B[0m '${
+                files[i]
+              }' might not have been deployed therefore it was skipped by the Uploader`
+            )
+          } else {
+            // Get the 'networks' object from the abi, parse data and contruct the payload then upload the file
+            const networks = abi.networks[networkId]
+            const payload = getMeta(networks, networkId, accounts[0])
+            payload.contractName = abi.contractName
+            uploadAbi(filePath, payload)
+          }
         }
       }
     }
