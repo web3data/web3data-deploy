@@ -7,7 +7,7 @@ let addUploadFile = function() {
   // Check that we can find the migrations folder
   if (!fs.existsSync(MIGRATIONS_DIR)) {
     console.log(`\n[ Uploader ] \u001B[31mERROR: Unable to locate migrations folder check that your \'migrations\' folder is in your project root directory\u001B[0m`)
-    console.log(`\n[ Uploader ] \u001B[32mINFO:\u001B[0m ${RERUN_MSG}`)
+    console.log(`\n[ Uploader ] \u001B[34mINFO:\u001B[0m ${RERUN_MSG}`)
   } else {
     // Iterate through files in the migrations directory
     fs.readdir(MIGRATIONS_DIR, (err, files) => {

@@ -71,7 +71,7 @@ const uploadAbi = function(file, payload) {
       console.log(err, res.statusCode)
     } else {
       console.log(
-        `[ Uploader ] \u001B[32mINFO:\u001B[0m View your contract, ${
+        `[ Uploader ] \u001B[34mINFO:\u001B[0m View your contract, ${
           payload.contractName
         } at: \u001B[36mhttps://${payload.slug}.amberdata.io/addresses/${
           payload.contractAddress
@@ -126,7 +126,7 @@ module.exports = function(deployer, network, accounts) {
            */
           if (isEmpty(abi.networks)) {
             console.log(
-              `\n[ Uploader ] \u001B[32mINFO:\u001B[0m '${
+              `\n[ Uploader ] \u001B[34mINFO:\u001B[0m '${
                 files[i]
               }' might not have been deployed therefore it was skipped by the Uploader`
             )
