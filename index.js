@@ -103,9 +103,10 @@ module.exports = function(deployer, network, accounts) {
   // Check that network is supported by amberdata
   if ([1, 4].indexOf(networkId) < 0) {
     console.info(
-      `\n [ Uploader ] \u001B[32mINFO:\u001B[0m Network, '${
+      `\n [ Uploader ] \u001B[33mWARN:\u001B[0m Network, '${
         ETHEREUM_NETWORKS[networkId] ? ETHEREUM_NETWORKS[networkId] : networkId
-      }', not supported by amberdata. Contract ABI not uploaded.\n`
+      }', not supported by amberdata. Contract ABI not uploaded.\n see
+      'https://github.com/web3data/web3data-deploy#installation' for more details.`
     )
     return
   }
