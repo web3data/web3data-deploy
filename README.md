@@ -5,12 +5,9 @@
 ## Table of Contents
 &nbsp;&nbsp;[Usage](#usage)
 <br/>&nbsp;&nbsp;[Installation](#installation)
-<!-- <br/>&nbsp;&nbsp;&nbsp;&nbsp;[Requirements](#requirements) -->
-<!-- <br/>&nbsp;&nbsp;&nbsp;&nbsp;[Testing](#testing) -->
 <br/>&nbsp;&nbsp;[Community](#community)
 <br/>&nbsp;&nbsp;[Resources](#resources)
 <br/>&nbsp;&nbsp;[Licensing](#licensing)
-
 
 # web3data-deploy
 A module to upload contract ABI to [Amberdata](amberdata.io), allowing for automated security audits and analytics!
