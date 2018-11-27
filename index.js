@@ -102,13 +102,13 @@ module.exports = function(deployer, network, accounts) {
 
   // Check that network is supported by amberdata
   if ([1, 4].indexOf(networkId) < 0) {
-    console.info(
+    console.log(
       `\n [ Uploader ] \u001B[33mWARN:\u001B[0m Network, '${
         ETHEREUM_NETWORKS[networkId] ? ETHEREUM_NETWORKS[networkId] : networkId
       }', not supported by amberdata. Contract ABI not uploaded.\n see
-      'https://github.com/web3data/web3data-deploy#installation' for more details.`
+      \u001B[36mhttps://github.com/web3data/web3data-deploy#installation\u001B[0m for more details.`
     )
-    return
+    return // Bail, network not supported
   }
 
   fs.readdir(DEFAULT_BUILD_DIR, (err, files) => {
