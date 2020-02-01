@@ -25,22 +25,22 @@
   },
   "homepage": "https://github.com/web3data/web3data-deploy#readme",
   "dependencies": {
-    "form-data": "^2.3.2",
-    "web3": "^1.0.0-beta.36",
-    "dotenv": "^6.0.0"
+    "form-data": "^3.0.0",
+    "web3": "^1.2.5",
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/node": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/register": "^7.0.0",
-    "@babel/runtime": "^7.1.2",
-    "ava": "^0.25.0",
-    "mock-fs": "^4.7.0",
-    "shelljs": "^0.8.2",
-    "xo": "^0.23.0"
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/register": "^7.8.3",
+    "@babel/runtime": "^7.8.4",
+    "ava": "^3.1.0",
+    "mock-fs": "^4.10.4",
+    "shelljs": "^0.8.3",
+    "xo": "^0.25.3"
   },
   "publishConfig": {
     "access": "public"
