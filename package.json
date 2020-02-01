@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "xo && ava",
+    "lint": "xo",
+    "lint:fix": "xo --fix",
     "postinstall": "node scripts/postinstall.js"
   },
   "repository": {
