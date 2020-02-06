@@ -1,13 +1,12 @@
 const fs = require('fs')
-const url = require('url')
 const path = require('path')
 const FormData = require('form-data')
 const dotenv = require('dotenv')
 
 dotenv.load()
 
-const prodUrl = url.parse('https://contract-service.amberdata.io/api/v1/upload')
-const devUrl = url.parse('http://localhost:1234/api/v1/upload')
+const prodUrl = new URL('https://contract-service.amberdata.io/api/v1/upload')
+const devUrl = new URL('http://localhost:1234/api/v1/upload')
 const mainPath = process.env.NODE_ENV === 'development' ? devUrl : prodUrl
 const headers = {'x-amberdata-api-key': process.env.AMBERDATA_API_KEY || ''}
 
@@ -71,11 +70,7 @@ const uploadAbi = function(file, payload) {
       console.log(err, res.statusCode)
     } else {
       console.log(
-        `[ Uploader ] \u001B[34mINFO:\u001B[0m View your contract, ${
-          payload.contractName
-        } at: \u001B[36mhttps://${payload.slug}.amberdata.io/addresses/${
-          payload.contractAddress
-        }/management\u001B[0m`
+        `[ Uploader ] \u001B[34mINFO:\u001B[0m View your contract, ${payload.contractName} at: \u001B[36mhttps://${payload.slug}.amberdata.io/addresses/${payload.contractAddress}/management\u001B[0m`
       )
     }
   })
@@ -101,7 +96,7 @@ module.exports = function(deployer, network, accounts) {
   const networkId = parseInt(deployer.network_id, 10)
 
   // Check that network is supported by amberdata
-  if ([1, 4].indexOf(networkId) < 0) {
+  if (![1, 4].includes(networkId)) {
     console.log(
       `\n [ Uploader ] \u001B[33mWARN:\u001B[0m Network, '${
         ETHEREUM_NETWORKS[networkId] ? ETHEREUM_NETWORKS[networkId] : networkId
@@ -115,10 +110,10 @@ module.exports = function(deployer, network, accounts) {
     if (err) {
       console.log(`\u001B[31m${err}\u001B[0m\n`)
     } else {
-      for (let i = 0; i < files.length; i++) {
-        if (files[i] !== 'Migrations.json') {
+      for (const element of files) {
+        if (element !== 'Migrations.json') {
           // Get absolute file path of conract abi and load the api
-          const filePath = path.join(DEFAULT_BUILD_DIR, '/', files[i])
+          const filePath = path.join(DEFAULT_BUILD_DIR, '/', element)
           const abi = JSON.parse(fs.readFileSync(filePath))
 
           /* Check if the networks field is empty. If it is, then the contract
@@ -126,9 +121,7 @@ module.exports = function(deployer, network, accounts) {
            */
           if (isEmpty(abi.networks)) {
             console.log(
-              `\n[ Uploader ] \u001B[34mINFO:\u001B[0m '${
-                files[i]
-              }' might not have been deployed therefore it was skipped by the Uploader`
+              `\n[ Uploader ] \u001B[34mINFO:\u001B[0m '${element}' might not have been deployed therefore it was skipped by the Uploader`
             )
           } else {
             // Get the 'networks' object from the abi, parse data and contruct the payload then upload the file
